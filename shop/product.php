@@ -145,6 +145,9 @@ function isVideo($url) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($product['name']); ?> - Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .product-detail-page {
@@ -204,7 +207,7 @@ function isVideo($url) {
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             border-radius: 1rem;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(4px);
             aspect-ratio: 1 / 1;
         }
@@ -418,26 +421,34 @@ function isVideo($url) {
             gap: 0.5rem;
         }
         .action-button-primary {
-            background: rgba(55, 65, 81, 1);
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
             color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
         .action-button-primary:hover {
-            background: rgba(75, 85, 99, 1);
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         .action-button-secondary {
-            background: #fff;
-            color: #000;
+            background: linear-gradient(135deg, #2a2a2a 0%, #111111 100%);
+            color: #fff;
             font-size: 1.125rem;
             padding: 1rem;
-            border: 2px solid #fff;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
         .action-button-secondary:hover {
-            background: rgba(229, 231, 235, 1);
-            transform: scale(1.05);
+            background: linear-gradient(135deg, #333333 0%, #1a1a1a 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: scale(1.05) translateY(-2px);
         }
         .error-message {
             background: rgba(127, 29, 29, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0.75rem;
             padding: 2rem;
             text-align: center;
@@ -463,7 +474,7 @@ function isVideo($url) {
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(17, 17, 17, 0.7);
         }
         <?php endif; ?>
     </style>

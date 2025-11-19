@@ -40,6 +40,9 @@ $backgroundImage = getBackgroundImage();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique - Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         <?php if ($backgroundImage): ?>
@@ -58,7 +61,7 @@ $backgroundImage = getBackgroundImage();
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(0, 0, 0, 0.7);
         }
         <?php endif; ?>
         .hero-section {
@@ -82,13 +85,19 @@ $backgroundImage = getBackgroundImage();
         }
         .hero-title-container {
             display: inline-block;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(24px);
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(20px);
             border-radius: 9999px;
             padding: 2.5rem 4rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
             margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-title-container:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         .hero-title {
             font-size: 3rem;
@@ -108,17 +117,19 @@ $backgroundImage = getBackgroundImage();
             gap: 1rem;
         }
         .menu-section {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            border-radius: 0.5rem;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(20px);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
         .menu-section:hover {
-            transform: scale(1.02) translateX(0.625rem);
+            transform: scale(1.05) translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 48px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
         .menu-section-header {
             padding: 1rem;
@@ -144,9 +155,13 @@ $backgroundImage = getBackgroundImage();
             transition: all 0.3s;
         }
         .menu-section:hover .menu-section-title {
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #aaaaaa 50%, #ffffff 100%);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
         .menu-section-content {
             max-height: 0;
@@ -158,7 +173,7 @@ $backgroundImage = getBackgroundImage();
             max-height: 500px;
             opacity: 1;
             padding: 0.5rem 1rem 1rem;
-            border-top: 1px solid rgba(55, 65, 81, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 0.5rem;
             padding-top: 0.75rem;
         }
@@ -177,9 +192,9 @@ $backgroundImage = getBackgroundImage();
         .bg-element {
             position: absolute;
             border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             filter: blur(80px);
-            animation: pulse-slow 3s ease-in-out infinite;
+            animation: float 15s ease-in-out infinite, pulse-slow 8s ease-in-out infinite;
         }
         .bg-element-1 {
             top: 5rem;
@@ -203,8 +218,18 @@ $backgroundImage = getBackgroundImage();
             animation-delay: 2s;
         }
         @keyframes pulse-slow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-20px) translateX(10px); }
+            66% { transform: translateY(10px) translateX(-10px); }
         }
         @media (min-width: 768px) {
             .hero-title {

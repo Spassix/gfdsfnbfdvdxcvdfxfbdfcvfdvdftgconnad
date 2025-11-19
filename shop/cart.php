@@ -242,6 +242,9 @@ function getColor($settings, $category, $property, $default) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier - Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .cart-page {
@@ -363,7 +366,7 @@ function getColor($settings, $category, $property, $default) {
             gap: 1rem;
         }
         .cart-item-card {
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(17, 17, 17, 0.6);
             border: 1px solid rgba(55, 65, 81, 1);
             border-radius: 0.75rem;
             padding: 1rem;
@@ -484,7 +487,7 @@ function getColor($settings, $category, $property, $default) {
             color: rgba(252, 165, 165, 1);
         }
         .summary-card {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0.75rem;
@@ -566,14 +569,15 @@ function getColor($settings, $category, $property, $default) {
         .summary-total {
             font-size: 1.5rem;
             font-weight: 700;
-            color: rgba(34, 197, 94, 1);
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(8px);
+            color: #fff;
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.9) 0%, rgba(42, 42, 42, 0.9) 100%);
+            backdrop-filter: blur(20px);
             padding: 1rem 1.5rem;
             border-radius: 0.5rem;
             margin-top: 0.5rem;
-            border-top: 2px solid rgba(34, 197, 94, 0.5);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
         .action-button {
             width: 100%;
@@ -624,7 +628,7 @@ function getColor($settings, $category, $property, $default) {
         .service-card {
             padding: 1.5rem;
             border-radius: 0.75rem;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(12px);
             cursor: pointer;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -709,7 +713,7 @@ function getColor($settings, $category, $property, $default) {
             border-color: rgba(255, 255, 255, 0.5);
         }
         .form-card {
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(17, 17, 17, 0.6);
             border: 1px solid rgba(55, 65, 81, 1);
             border-radius: 0.75rem;
             padding: 1.5rem;
@@ -818,7 +822,7 @@ function getColor($settings, $category, $property, $default) {
         .empty-cart {
             text-align: center;
             padding: 4rem 1rem;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(12px);
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -875,7 +879,7 @@ function getColor($settings, $category, $property, $default) {
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(17, 17, 17, 0.7);
         }
         <?php endif; ?>
     </style>
@@ -921,7 +925,7 @@ function getColor($settings, $category, $property, $default) {
 
                 <!-- Messages de succès/erreur -->
                 <?php if (isset($_SESSION['success_message'])): ?>
-                    <div class="alert-message" style="background: rgba(20, 83, 45, 0.5); border: 1px solid rgba(34, 197, 94, 0.5);">
+                    <div class="alert-message" style="background: rgba(26, 26, 26, 0.6); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px);">
                         <p style="color: rgba(74, 222, 128, 1);"><?php echo htmlspecialchars($_SESSION['success_message']); ?></p>
                     </div>
                     <?php unset($_SESSION['success_message']); ?>
@@ -977,7 +981,7 @@ function getColor($settings, $category, $property, $default) {
                             <?php if (!empty($settings['promosEnabled'])): ?>
                             <div class="promo-section">
                                 <?php if ($promoApplied): ?>
-                                    <div style="margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(74, 222, 128, 0.5); border-radius: 0.5rem;">
+                                    <div style="margin-bottom: 0.5rem; padding: 0.5rem; background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.5rem;">
                                         <div style="display: flex; align-items: center; justify-content: space-between;">
                                             <span style="color: rgba(74, 222, 128, 1); font-size: 0.875rem; font-weight: 600;">
                                                 ✅ Code: <?php echo htmlspecialchars($promoCode); ?>
@@ -1000,7 +1004,7 @@ function getColor($settings, $category, $property, $default) {
                                         <button type="submit" name="apply_promo" class="promo-btn">Appliquer</button>
                                     </form>
                                     <?php if ($promoError): ?>
-                                        <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(127, 29, 29, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); border-radius: 0.5rem;">
+                                        <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.5rem;">
                                             <span style="color: rgba(248, 113, 113, 1); font-size: 0.75rem;"><?php echo htmlspecialchars($promoError); ?></span>
                                         </div>
                                     <?php endif; ?>
@@ -1079,8 +1083,8 @@ function getColor($settings, $category, $property, $default) {
                                 <?php endforeach; ?>
                                 
                                 <?php if (!$hasServices): ?>
-                                    <div style="padding: 2rem; text-align: center; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 0.5rem;">
-                                        <p style="color: #fff; background: rgba(239, 68, 68, 0.9); backdrop-filter: blur(8px); padding: 1rem 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(255, 255, 255, 0.3); font-weight: 600; font-size: 1rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);">
+                                    <div style="padding: 2rem; text-align: center; background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 0.5rem; backdrop-filter: blur(20px);">
+                                        <p style="color: #fff; background: rgba(17, 17, 17, 0.9); backdrop-filter: blur(20px); padding: 1rem 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(255, 255, 255, 0.2); font-weight: 600; font-size: 1rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);">
                                             ⚠️ Aucun service de livraison disponible pour le moment. Veuillez contacter l'administrateur.
                                         </p>
                                     </div>

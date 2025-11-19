@@ -52,6 +52,9 @@ $gradients = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catégories - Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .categories-page {
@@ -103,7 +106,7 @@ $gradients = [
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             border-radius: 1rem;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(4px);
             cursor: pointer;
             transition: all 0.3s;
@@ -219,7 +222,7 @@ $gradients = [
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(17, 17, 17, 0.7);
         }
         <?php endif; ?>
     </style>

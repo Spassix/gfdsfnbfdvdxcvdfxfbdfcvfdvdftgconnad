@@ -91,6 +91,9 @@ $backgroundImage = getBackgroundImage();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produits - Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .products-page {
@@ -111,13 +114,19 @@ $backgroundImage = getBackgroundImage();
         }
         .page-title-container {
             display: inline-block;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(24px);
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(20px);
             border-radius: 9999px;
             padding: 2.5rem 4rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
             margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .page-title-container:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         .page-title {
             font-size: 3rem;
@@ -141,11 +150,18 @@ $backgroundImage = getBackgroundImage();
             width: 100%;
             padding: 1rem 1.5rem;
             padding-right: 6rem;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(55, 65, 81, 1);
+            background: rgba(17, 17, 17, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             color: #fff;
             font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+            background: rgba(17, 17, 17, 0.7);
         }
         .search-input::placeholder {
             color: #9ca3af;
@@ -156,23 +172,33 @@ $backgroundImage = getBackgroundImage();
             top: 50%;
             transform: translateY(-50%);
             padding: 0.5rem 1rem;
-            background: #fff;
-            color: #000;
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
+            color: #fff;
             border-radius: 0.5rem;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+        .search-button:hover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-50%) scale(1.05);
         }
         .filters-panel {
             margin-top: 1rem;
             padding: 1rem;
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(55, 65, 81, 1);
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             display: none;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
         }
         .filters-panel.show {
             display: block;
@@ -204,19 +230,33 @@ $backgroundImage = getBackgroundImage();
         .filter-select {
             width: 100%;
             padding: 0.5rem 1rem;
-            background: #000;
-            border: 1px solid rgba(55, 65, 81, 1);
+            background: rgba(17, 17, 17, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 0.5rem;
             color: #fff;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .filter-select:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
         .reset-button {
             width: 100%;
             padding: 0.5rem 1rem;
-            background: rgba(55, 65, 81, 1);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             color: #fff;
             border-radius: 0.5rem;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+        }
+        .reset-button:hover {
+            background: linear-gradient(135deg, #222222 0%, #333333 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         .category-section {
             margin-bottom: 3rem;
@@ -224,12 +264,13 @@ $backgroundImage = getBackgroundImage();
         .category-header {
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(55, 65, 81, 0.5);
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(4px);
-            border-radius: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
             padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
         }
         .category-header-content {
             display: flex;
@@ -281,23 +322,25 @@ $backgroundImage = getBackgroundImage();
             }
         }
         .product-card {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
             overflow: hidden;
-            background: rgba(15, 23, 42, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(20px);
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .product-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 48px rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.15);
         }
         .product-image-container {
             position: relative;
             height: 12rem;
             overflow: hidden;
-            background: rgba(30, 41, 59, 1);
+            background: rgba(26, 26, 26, 1);
         }
         @media (min-width: 768px) {
             .product-image-container {
@@ -358,16 +401,21 @@ $backgroundImage = getBackgroundImage();
         }
         .view-button {
             padding: 0.375rem 0.75rem;
-            background: #000;
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
             border-radius: 0.5rem;
             color: #fff;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.875rem;
-            transition: background 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
         .view-button:hover {
-            background: rgba(31, 41, 55, 1);
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         @media (min-width: 768px) {
             .view-button {
@@ -404,7 +452,7 @@ $backgroundImage = getBackgroundImage();
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(0, 0, 0, 0.7);
         }
         <?php endif; ?>
     </style>
@@ -616,7 +664,7 @@ $backgroundImage = getBackgroundImage();
                                                                     allowfullscreen
                                                                     style="border: none;"></iframe>
                                                         <?php elseif (preg_match('/\.(mp4|webm|mov|MOV|avi|mkv|m4v|3gp)$/i', $displayImage)): ?>
-                                                            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(30, 41, 59, 1);">
+                                                            <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: rgba(26, 26, 26, 1);">
                                                                 <div style="font-size: 3rem;">🎥</div>
                                                             </div>
                                                         <?php else: ?>

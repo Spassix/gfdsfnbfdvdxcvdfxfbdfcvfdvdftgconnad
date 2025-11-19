@@ -100,6 +100,9 @@ $showForm = $_GET['showForm'] ?? false;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avis Clients - Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         .reviews-page {
@@ -141,7 +144,7 @@ $showForm = $_GET['showForm'] ?? false;
         }
         .btn-add-review {
             padding: 0.75rem 1.5rem;
-            background: linear-gradient(to right, #db2777, #9333ea);
+            background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%);
             color: #fff;
             font-weight: 700;
             border-radius: 0.5rem;
@@ -150,14 +153,16 @@ $showForm = $_GET['showForm'] ?? false;
             transition: all 0.3s;
         }
         .btn-add-review:hover {
-            background: linear-gradient(to right, #be185d, #7e22ce);
+            background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
         .review-form-card {
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(17, 17, 17, 0.6);
             backdrop-filter: blur(4px);
             margin-bottom: 3rem;
         }
@@ -241,7 +246,7 @@ $showForm = $_GET['showForm'] ?? false;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
             border-radius: 0.75rem;
             padding: 1.5rem;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(12px);
         }
         .review-header {
@@ -298,7 +303,7 @@ $showForm = $_GET['showForm'] ?? false;
         .empty-state {
             text-align: center;
             padding: 4rem 1rem;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(12px);
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -328,7 +333,7 @@ $showForm = $_GET['showForm'] ?? false;
             background-repeat: no-repeat;
         }
         .cosmic-bg::before {
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(17, 17, 17, 0.7);
         }
         <?php endif; ?>
     </style>
@@ -357,13 +362,13 @@ $showForm = $_GET['showForm'] ?? false;
 
             <!-- Messages de succès/erreur -->
             <?php if ($success): ?>
-                <div class="alert-message" style="background: rgba(20, 83, 45, 0.9); border: 2px solid rgba(34, 197, 94, 1); margin-bottom: 2rem; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);">
+                <div class="alert-message" style="background: rgba(26, 26, 26, 0.9); border: 2px solid rgba(255, 255, 255, 0.2); margin-bottom: 2rem; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px);">
                     <p style="color: #fff; font-weight: 700; font-size: 1.125rem; text-align: center;">✅ Votre avis a été envoyé ! Il sera publié après validation par l'administrateur.</p>
                 </div>
             <?php endif; ?>
             
             <?php if ($error): ?>
-                <div class="alert-message" style="background: rgba(127, 29, 29, 0.9); border: 2px solid rgba(239, 68, 68, 1); margin-bottom: 2rem; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);">
+                <div class="alert-message" style="background: rgba(26, 26, 26, 0.9); border: 2px solid rgba(255, 255, 255, 0.2); margin-bottom: 2rem; padding: 1.5rem; border-radius: 0.75rem; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); backdrop-filter: blur(20px);">
                     <p style="color: #fff; font-weight: 700; font-size: 1.125rem; text-align: center;">❌ <?php echo htmlspecialchars($error); ?></p>
                 </div>
             <?php endif; ?>
@@ -433,7 +438,7 @@ $showForm = $_GET['showForm'] ?? false;
                             </div>
                             <?php if (!empty($review['products']) && is_array($review['products']) && !empty($review['products'][0])): ?>
                                 <div style="margin-bottom: 0.5rem;">
-                                    <span style="color: #8b5cf6; font-size: 0.875rem; font-weight: 600;">📦 <?php echo htmlspecialchars($review['products'][0]['name'] ?? ''); ?></span>
+                                    <span style="color: #d1d5db; font-size: 0.875rem; font-weight: 600;">📦 <?php echo htmlspecialchars($review['products'][0]['name'] ?? ''); ?></span>
                                 </div>
                             <?php endif; ?>
                             <p class="review-text"><?php echo nl2br(htmlspecialchars($review['text'] ?? '')); ?></p>

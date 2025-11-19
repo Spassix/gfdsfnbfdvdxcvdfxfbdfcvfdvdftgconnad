@@ -1,32 +1,92 @@
-/* Styles globaux pour la boutique */
+/* ============================================
+   STYLES GLOBAUX - THÈME SOMBRE MONOCHROME
+   ============================================ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Variables CSS */
+:root {
+    /* Couleurs de base - Monochrome noir/gris */
+    --color-black: #000000;
+    --color-black-soft: #0a0a0a;
+    --color-gray-dark-1: #111111;
+    --color-gray-dark-2: #1a1a1a;
+    --color-gray-dark-3: #222222;
+    --color-gray-medium-1: #2a2a2a;
+    --color-gray-medium-2: #333333;
+    --color-gray-light-1: #444444;
+    --color-gray-light-2: #555555;
+    
+    /* Accents néon gris (très subtils) */
+    --neon-gray-dark: #1a1a1a;
+    --neon-gray-medium: #3a3a3a;
+    --glow-subtle-1: rgba(255, 255, 255, 0.05);
+    --glow-subtle-2: rgba(255, 255, 255, 0.1);
+    --glow-subtle-3: rgba(255, 255, 255, 0.15);
+    --glow-subtle-4: rgba(255, 255, 255, 0.2);
+    
+    /* Typographie */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-accent: 'Space Grotesk', 'Poppins', sans-serif;
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--color-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-gray-dark-2), var(--color-gray-medium-1));
+    border-radius: 10px;
+    border: 1px solid var(--glow-subtle-2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--color-gray-medium-1), var(--color-gray-light-1));
+}
+
+/* Sélection de texte */
+::selection {
+    background: var(--glow-subtle-4);
+    color: #fff;
+}
+
+/* HTML et Body */
 html {
-    background: #0f172a;
+    background: var(--color-black);
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-primary);
     color: #fff;
     min-height: 100vh;
     position: relative;
-    background: #0f172a;
+    background: var(--color-black);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
-/* Cosmic Background */
+/* Background animé */
 .cosmic-bg {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
-    background-size: cover;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%);
+    background-size: 200% 200%;
     background-position: center;
     min-height: 100vh;
     position: relative;
+    animation: gradient-shift 20s ease infinite;
 }
 
-/* L'image de fond sera ajoutée dynamiquement via PHP si configurée */
+/* Particules et effets de fond subtils */
 .cosmic-bg::before {
     content: '';
     position: fixed;
@@ -34,64 +94,189 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-@keyframes gradientShift {
+/* Orbes gris pulsants (très subtils) */
+.cosmic-bg::after {
+    content: '';
+    position: fixed;
+    top: 10%;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Typographie */
+h1 {
+    font-family: var(--font-accent);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 10px var(--glow-subtle-2), 0 0 20px var(--glow-subtle-1);
+    background: linear-gradient(135deg, #ffffff 0%, #aaaaaa 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 5s ease infinite;
+}
+
+h2 {
+    font-family: var(--font-accent);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h3, h4, h5, h6 {
+    font-family: var(--font-accent);
+    font-weight: 600;
+}
+
+/* Bordure néon gris */
+.neon-border {
+    border: 2px solid var(--glow-subtle-2);
+    box-shadow: 0 0 10px var(--glow-subtle-1),
+                0 0 20px var(--glow-subtle-1),
+                inset 0 0 10px var(--glow-subtle-1);
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.neon-border:hover {
+    border-color: var(--glow-subtle-3);
+    box-shadow: 0 0 20px var(--glow-subtle-2),
+                0 0 40px var(--glow-subtle-1),
+                inset 0 0 20px var(--glow-subtle-1);
+}
+
+/* Gradient texte */
+.text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #aaaaaa 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 5s ease infinite;
+}
+
+/* ============================================
+   ANIMATIONS CSS
+   ============================================ */
+
+@keyframes gradient-shift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Neon Border */
-.neon-border {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1),
-                0 0 20px rgba(236, 72, 153, 0.1),
-                inset 0 0 10px rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+@keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    33% { transform: translateY(-20px) translateX(10px); }
+    66% { transform: translateY(10px) translateX(-10px); }
 }
 
-/* Text Gradient */
-.text-gradient {
-    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+@keyframes glow-pulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px var(--glow-subtle-2),
+                    0 0 0 1px var(--glow-subtle-2);
+    }
+    50% { 
+        box-shadow: 0 0 40px var(--glow-subtle-3),
+                    0 0 0 1px var(--glow-subtle-3);
+    }
 }
 
-/* Animations */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes pulse-slow {
     0%, 100% { opacity: 0.5; }
     50% { opacity: 1; }
 }
 
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Classes d'animation */
 .animate-pulse-slow {
     animation: pulse-slow 3s ease-in-out infinite;
 }
 
-/* Responsive Mobile */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, 
+        rgba(17, 17, 17, 0) 0%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(17, 17, 17, 0) 100%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE
+   ============================================ */
+
 @media (max-width: 767px) {
     body {
         font-size: 0.875rem;
     }
+    
     .max-w-7xl {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
     }
+    
     .px-4 {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
     }
+    
+    /* Réduire les animations sur mobile si prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 }
 
-/* Utilities */
+/* ============================================
+   UTILITAIRES
+   ============================================ */
+
 .min-h-screen {
     min-height: 100vh;
 }
@@ -99,6 +284,7 @@ body {
 .pt-24 {
     padding-top: 5rem;
 }
+
 @media (max-width: 767px) {
     .pt-24 {
         padding-top: 4.5rem;
@@ -144,7 +330,7 @@ body {
 }
 
 .bg-slate-900\/50 {
-    background-color: rgba(15, 23, 42, 0.5);
+    background-color: rgba(17, 17, 17, 0.5);
 }
 
 .backdrop-blur-xl {
@@ -172,7 +358,7 @@ body {
 }
 
 .border-white\/30 {
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--glow-subtle-3);
 }
 
 .shadow-\[0_0_40px_rgba\(0\,0\,0\,0\.8\)\] {
@@ -288,16 +474,6 @@ body {
     .xl\:grid-cols-5 {
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
-}
-
-/* Loading Spinner */
-.animate-spin {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 /* Line clamp */
@@ -534,3 +710,13 @@ body {
     white-space: pre-line;
 }
 
+/* Hidden */
+.hidden {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .md\:inline {
+        display: inline;
+    }
+}
