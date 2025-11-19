@@ -1,0 +1,39 @@
+# Protection de l'API
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Bloquer l'accès aux fichiers sensibles
+    <FilesMatch "^(security\.php|\.htaccess|\.env)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+    
+    # Limiter la taille des requêtes
+    LimitRequestBody 10485760
+    
+    # Désactiver l'affichage des erreurs en production
+    php_flag display_errors Off
+    php_flag log_errors On
+</IfModule>
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+    # Protection XSS
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Empêcher le MIME sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Protection contre le clickjacking
+    Header set X-Frame-Options "DENY"
+    
+    # Politique de référent
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Content Security Policy
+    Header set Content-Security-Policy "default-src 'self'"
+</IfModule>
+
+# Désactiver le listing des répertoires
+Options -Indexes
+

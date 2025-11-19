@@ -1,0 +1,35 @@
+# Fichiers sensibles
+.env
+config.local.php
+*.log
+logs/
+*.key
+*.pem
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Fichiers temporaires
+tmp/
+temp/
+cache/
+
+# Fichiers de session
+sessions/
+
+# Fichiers de backup
+*.bak
+*.backup
+*.sql.gz
+
+# Fichiers de sécurité
+security.log
+access.log
+error.log
+
